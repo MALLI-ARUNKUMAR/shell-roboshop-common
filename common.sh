@@ -55,20 +55,20 @@ APP_SETUP(){
         echo -e "Roboshop user already exist ... $Y SKIPPING $N"
     fi
 
-    mkdir -p /app 
-    VALIDATE $? "Creating app directory"
+mkdir -p /app 
+VALIDATE $? "Creating app directory"
 
-    curl -o /tmp/$APPNAME.zip https://roboshop-artifacts.s3.amazonaws.com/$APPNAME-v3.zip  &>>$LOGS_FILE
-    VALIDATE $? "Downloading $APPNAME code"
+curl -o /tmp/$APP_NAME.zip https://roboshop-artifacts.s3.amazonaws.com/$APP_NAME-v3.zip  &>>$LOGS_FILE
+VALIDATE $? "Downloading $APP_NAME code"
 
-    cd /app
-    VALIDATE $? "Moving to app directory"
+cd /app
+VALIDATE $? "Moving to app directory"
 
-    rm -rf /app/*
-    VALIDATE $? "Removing existing code"
+rm -rf /app/*
+VALIDATE $? "Removing existing code"
 
-    unzip /tmp/$APPNAME.zip &>>$LOGS_FILE
-    VALIDATE $? "Uzip $APPNAME code"
+unzip /tmp/$APP_NAME.zip &>>$LOGS_FILE
+VALIDATE $? "Uzip $APP_NAME code"
 }
 SYSTEMD_SETUP(){
     cp $SCRIPT_DIR/$APPNAME.service /etc/systemd/system/$APPNAME.service
@@ -81,8 +81,8 @@ SYSTEMD_SETUP(){
 }    
 
 APP_RESTART(){          
-    systemctl restart catalogue
-    VALIDATE $? "Restarting catalogue"
+    systemctl restart $APP_NAME
+    VALIDATE $? "Restarting $APP_NAME"
 }
 
 PRINT_TOTAL_TIME(){
