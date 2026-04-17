@@ -4,7 +4,7 @@ source ./common.sh
 
 APP_NAME=catalogue
 
-chech_root
+check_root
 
 APP_SETUP
 
