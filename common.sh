@@ -71,13 +71,13 @@ unzip /tmp/$APP_NAME.zip &>>$LOGS_FILE
 VALIDATE $? "Uzip $APP_NAME code"
 }
 SYSTEMD_SETUP(){
-    cp $SCRIPT_DIR/$APPNAME.service /etc/systemd/system/$APPNAME.service
+    cp $SCRIPT_DIR/$APP_NAME.service /etc/systemd/system/$APP_NAME.service
     VALIDATE $? "Created systemctl service"
 
     systemctl daemon-reload
-    systemctl enable $APPNAME  &>>$LOGS_FILE
-    systemctl start $APPNAME
-    VALIDATE $? "Starting and enabling $APPNAME"
+    systemctl enable $APP_NAME  &>>$LOGS_FILE
+    systemctl start $APP_NAME
+    VALIDATE $? "Starting and enabling $APP_NAME"
 }    
 
 APP_RESTART(){          
