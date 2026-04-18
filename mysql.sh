@@ -2,6 +2,8 @@
 
 source ./common.sh
 
+APP_NAME=mysql
+
 check_root
 
 dnf install mysql-server -y &>>$LOGS_FILE
@@ -14,3 +16,5 @@ VALIDATE $? "Enable and start mysql"
 # get the password from user
 mysql_secure_installation --set-root-pass RoboShop@1
 VALIDATE $? "Setup root password"
+
+PRINT_TOTAL_TIME
