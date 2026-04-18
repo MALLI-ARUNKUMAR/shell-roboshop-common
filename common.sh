@@ -11,6 +11,7 @@ N="\e[0m"
 mkdir -p $LOGS_FOLDER
 SCRIPT_DIR=$PWD
 MONGODB_HOST=mongodb.daws88s.online
+MYSQL_HOST=mysql.daws88s.online
 
 START_TIME=$(date +%s)
 echo "$(date "+%Y-%m-%d :%H:%M:%S") |scrit started executing at :$(date)" | tee -a $LOGS_FILE
@@ -69,6 +70,17 @@ VALIDATE $? "Removing existing code"
 
 unzip /tmp/$APP_NAME.zip &>>$LOGS_FILE
 VALIDATE $? "Uzip $APP_NAME code"
+}
+NODEJS_SETUP(){
+    dnf install maven -y &>>$LOGS_FILE
+    VALIDATE $? "Installing Maven"
+    cd /app 
+    mvn clean package &>>$LOGS_FILE
+    VALIDATE $? "Installing and Building $APP_NAME"
+
+    mv target/$APP_NAME-1.0.jar $APP_NAME.jar 
+    VALIDATE $? "Moving and Renaming $APP_NAME"
+
 }
 SYSTEMD_SETUP(){
     cp $SCRIPT_DIR/$APP_NAME.service /etc/systemd/system/$APP_NAME.service
