@@ -18,4 +18,5 @@ VALIDATE $? "Enable MongoDB"
 
 systemctl restart mongod
 VALIDATE $? "Start MongoDB"
+
 PRINT_TOTAL_TIME
