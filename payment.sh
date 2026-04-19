@@ -2,7 +2,7 @@
 
 source ./common.sh
 
-APP_NAME=shipping
+APP_NAME=payment
 
 check_root
 
