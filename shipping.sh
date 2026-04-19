@@ -3,7 +3,7 @@
 source ./common.sh
 
 APP_NAME=shipping
-
+MYSQL_HOST=mysql.daws88s.online
 check_root
 
 APP_SETUP
@@ -22,6 +22,7 @@ if [ $? -ne 0 ]; then
 else
     echo -e "data is already loaded ... $Y SKIPPING $N"
 fi
+
 APP_RESTART
 
 PRINT_TOTAL_TIME
