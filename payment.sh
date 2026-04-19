@@ -1,15 +1,13 @@
 #!/bin/bash
 
- source ./common.sh
+source ./common.sh
 
- APP_NAME=payment.sh
+APP_NAME=shipping
 
- check_root
+check_root
 
- APP_SETUP
+PYTHON_SETUP
 
- PYTHON_SETUP
+SYSTEMD_SETUP
 
- SYSTEMD_SETUP
-
- PRINT_TOTAL_TIME
+PRINT_TOTAL_TIME
