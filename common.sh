@@ -71,7 +71,7 @@ VALIDATE $? "Removing existing code"
 unzip /tmp/$APP_NAME.zip &>>$LOGS_FILE
 VALIDATE $? "Uzip $APP_NAME code"
 }
-NODEJS_SETUP(){
+JAVA_SETUP(){
     dnf install maven -y &>>$LOGS_FILE
     VALIDATE $? "Installing Maven"
     cd /app 
