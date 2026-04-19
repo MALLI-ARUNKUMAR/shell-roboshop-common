@@ -3,7 +3,7 @@
 source ./common.sh
 
 APP_NAME=shipping
-MYSQL_HOST=mysql.daws88s.online
+
 check_root
 
 APP_SETUP
@@ -11,6 +11,9 @@ APP_SETUP
 JAVA_SETUP
 
 SYSTEMD_SETUP
+
+dnf install mysql -y  &>>$LOGS_FILE
+VALIDATE $? "Installing MySQL"
 
 mysql -h $MYSQL_HOST -uroot -pRoboShop@1 -e 'use cities'
 if [ $? -ne 0 ]; then
