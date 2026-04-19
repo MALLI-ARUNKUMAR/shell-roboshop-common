@@ -47,6 +47,15 @@ NODEJS_SETUP(){
     VALIDATE $? "Installing dependencies"
 
 }
+PYTHON_SETUP(){
+    dnf install python3 gcc python3-devel -y &>>$LOGS_FILE
+    VALIDATE $? "Installing Python"
+    cd /app 
+    pip3 install -r requirements.txt &>>$LOGS_FILE
+    VALIDATE $? "Installing dependencies"
+
+
+}
 APP_SETUP(){
     id roboshop &>>$LOGS_FILE
     if [ $? -ne 0 ]; then
@@ -82,15 +91,7 @@ JAVA_SETUP(){
     VALIDATE $? "Moving and Renaming $APP_NAME"
 
 }
-PYTHON_SETUP(){
-    dnf install python3 gcc python3-devel -y &>>$LOGS_FILE
-    VALIDATE $? "Installing Python"
-    cd /app 
-    pip3 install -r requirements.txt &>>$LOGS_FILE
-    VALIDATE $? "Installing dependencies"
 
-
-}
 SYSTEMD_SETUP(){
     cp $SCRIPT_DIR/$APP_NAME.service /etc/systemd/system/$APP_NAME.service
     VALIDATE $? "Created systemctl service"
