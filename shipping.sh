@@ -4,7 +4,7 @@ source ./common.sh
 
 APP_NAME=shipping
 
-MYSQL_HOST=mysql.daws88s.online
+MYSQL_HOST=mysql.daws880s.online
 check_root
 
 APP_SETUP
