@@ -23,6 +23,7 @@ else
     echo -e "data is already loaded ... $Y SKIPPING $N"
 fi
 
+
 APP_RESTART
 
 PRINT_TOTAL_TIME
